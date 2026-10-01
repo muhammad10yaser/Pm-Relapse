@@ -1,0 +1,57 @@
+[
+  {
+    "name": "elfldr-ps5-1360.elf",
+    "size": 397024,
+    "type": "elf"
+  },
+  {
+    "name": "etaHEN.elf",
+    "size": 4696440,
+    "type": "elf"
+  },
+  {
+    "name": "ftpsrv-ps5.elf",
+    "size": 174712,
+    "type": "elf"
+  },
+  {
+    "name": "game-compressor.elf",
+    "size": 1289424,
+    "type": "elf"
+  },
+  {
+    "name": "kstuff.elf",
+    "size": 1737080,
+    "type": "elf"
+  },
+  {
+    "name": "lapy_jb_daemon.elf",
+    "size": 543792,
+    "type": "elf"
+  },
+  {
+    "name": "nanodns.elf",
+    "size": 132344,
+    "type": "elf"
+  },
+  {
+    "name": "np-fake-signin-ps5.elf",
+    "size": 119872,
+    "type": "elf"
+  },
+  {
+    "name": "pldmgr_v0.5.1.elf",
+    "size": 2410768,
+    "type": "elf"
+  },
+  {
+    "name": "ps5-app-dumper.elf",
+    "size": 165248,
+    "type": "elf"
+  },
+  {
+    "name": "shadowmountplus.elf",
+    "size": 2449672,
+    "type": "elf"
+  }
+]
