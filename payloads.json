@@ -93,5 +93,10 @@
     "name": "shadowmountplus(0.17 beta 2).elf",
     "size": 2449672,
     "type": "elf"
+  },
+  {
+    "name": "webkit-autoloader-installer_v0.5.2.elf",
+    "size": 2311424,
+    "type": "elf"
   }
 ]
