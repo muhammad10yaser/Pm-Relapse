@@ -47,9 +47,12 @@
       pointer-events: none;
     }
 
+    /* ============================================================
+       LAYOUT — 55% exploit / 45% payloads
+       ============================================================ */
     #layout {
       display: grid;
-      grid-template-columns: 1fr 420px;
+      grid-template-columns: 55fr 45fr;
       height: 100vh;
     }
 
@@ -59,12 +62,12 @@
       align-items: center;
       justify-content: center;
       padding: 40px;
-      gap: 28px;
+      gap: 26px;
       color: var(--left-text);
     }
 
     .brand h1 {
-      font-size: 36px;
+      font-size: 34px;
       letter-spacing: 6px;
       font-weight: 500;
       color: #a78bfa;
@@ -73,11 +76,11 @@
     }
 
     .brand .dev {
-      font-size: 15px;
+      font-size: 14px;
       letter-spacing: 3px;
       color: var(--left-dim);
       text-align: center;
-      margin-top: 10px;
+      margin-top: 8px;
       text-transform: uppercase;
     }
 
@@ -86,8 +89,9 @@
       font-weight: 700;
     }
 
+    /* ---------- PROGRESS BAR ---------- */
     #bar-wrap {
-      width: min(720px, 92%);
+      width: min(640px, 92%);
       height: 24px;
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(167, 139, 250, 0.25);
@@ -104,7 +108,7 @@
       background: linear-gradient(90deg, var(--purple), var(--purple-2), var(--purple));
       background-size: 200% 100%;
       animation: slide 1.4s linear infinite;
-      transition: width 0.35s cubic-bezier(0.34, 1.2, 0.64, 1);
+      transition: width 0.3s cubic-bezier(0.34, 1.2, 0.64, 1);
       box-shadow: 0 0 20px rgba(124, 92, 255, 0.7);
       border-radius: 12px;
     }
@@ -115,15 +119,15 @@
     }
 
     #status {
-      font-size: 18px;
+      font-size: 17px;
       color: var(--left-dim);
-      min-height: 26px;
+      min-height: 24px;
       text-align: center;
       font-weight: 500;
     }
 
     #hint {
-      font-size: 16px;
+      font-size: 14px;
       color: var(--left-dim-2);
       letter-spacing: 2px;
       text-align: center;
@@ -141,11 +145,11 @@
     }
 
     #console {
-      width: min(720px, 92%);
+      width: min(640px, 92%);
       max-height: 26vh;
       overflow-y: auto;
-      padding: 16px 20px;
-      font-size: 15px;
+      padding: 14px 18px;
+      font-size: 13px;
       line-height: 1.6;
       color: #7fbf9f;
       background: rgba(0, 0, 0, 0.35);
@@ -166,7 +170,7 @@
       position: absolute;
       bottom: 20px;
       left: 40px;
-      font-size: 14px;
+      font-size: 13px;
       color: var(--left-dim-2);
       letter-spacing: 3px;
       text-transform: uppercase;
@@ -174,6 +178,7 @@
 
     #credit span { color: #a78bfa; font-weight: 700; }
 
+    /* ---------- PAYLOAD PANEL ---------- */
     #payloads {
       background: rgba(13, 21, 38, 0.6);
       border-left: 1px solid rgba(167, 139, 250, 0.18);
@@ -184,11 +189,12 @@
     }
 
     #payloads header {
-      padding: 24px 26px 16px;
+      padding: 20px 22px 14px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       border-bottom: 1px solid rgba(167, 139, 250, 0.18);
+      min-height: 60px;
     }
 
     #payloads header .title {
@@ -199,8 +205,8 @@
     }
 
     #controls-hint {
-      padding: 12px 26px;
-      font-size: 14px;
+      padding: 12px 22px;
+      font-size: 13px;
       letter-spacing: 1px;
       color: var(--left-dim-2);
       border-bottom: 1px solid rgba(167, 139, 250, 0.12);
@@ -210,22 +216,44 @@
 
     #controls-hint b { color: #a78bfa; font-weight: 700; }
 
+    /* ============================================================
+       PAYLOAD LIST — 2-column grid
+       ============================================================ */
     #list {
       flex: 1;
       overflow-y: auto;
-      padding: 8px 0;
+      padding: 12px 14px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      align-content: start;
+    }
+
+    #list::-webkit-scrollbar { width: 8px; }
+    #list::-webkit-scrollbar-thumb {
+      background: rgba(167, 139, 250, 0.3);
+      border-radius: 4px;
+    }
+
+    @media (max-width: 900px) {
+      #list { grid-template-columns: 1fr; }
     }
 
     .payload {
-      padding: 16px 26px;
-      font-size: 15px;
+      padding: 14px 16px;
+      font-size: 14px;
       color: var(--left-text);
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       border-left: 3px solid transparent;
-      transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.02);
+      transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
       cursor: pointer;
+      white-space: nowrap;
+      overflow: hidden;
+      min-width: 0;
     }
 
     .payload .check {
@@ -237,7 +265,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 13px;
+      font-size: 12px;
       color: transparent;
       background: rgba(255, 255, 255, 0.04);
       transition: background-color 0.15s ease, border-color 0.15s ease;
@@ -249,10 +277,11 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      min-width: 0;
     }
 
     .payload .status {
-      font-size: 12px;
+      font-size: 10px;
       letter-spacing: 1px;
       text-transform: uppercase;
       color: var(--left-dim-2);
@@ -265,7 +294,7 @@
     }
 
     .payload.selected {
-      background-color: rgba(124, 92, 255, 0.12);
+      background-color: rgba(124, 92, 255, 0.14);
       border-left-color: var(--purple);
       color: #fff;
     }
@@ -284,7 +313,7 @@
     .payload.sending {
       color: #ffd166;
       border-left-color: var(--warn);
-      background-color: rgba(194, 104, 13, 0.08);
+      background-color: rgba(194, 104, 13, 0.12);
     }
 
     .payload.sending .status { color: var(--warn); }
@@ -306,7 +335,7 @@
     .payload.failed {
       color: #f87171;
       border-left-color: var(--err);
-      background-color: rgba(192, 43, 43, 0.08);
+      background-color: rgba(192, 43, 43, 0.12);
     }
 
     .payload.failed .status { color: var(--err); }
@@ -315,11 +344,13 @@
       padding: 40px 20px;
       text-align: center;
       color: var(--left-dim-2);
-      font-size: 15px;
+      font-size: 14px;
+      grid-column: 1 / -1;
     }
 
+    /* ---------- FOOTER ---------- */
     #footer {
-      padding: 16px 26px;
+      padding: 14px 18px;
       border-top: 1px solid rgba(167, 139, 250, 0.18);
       background: rgba(10, 17, 32, 0.7);
       display: flex;
@@ -329,8 +360,8 @@
 
     #sendBtn {
       width: 100%;
-      padding: 14px;
-      font-size: 15px;
+      padding: 13px;
+      font-size: 14px;
       font-weight: 700;
       letter-spacing: 2px;
       font-family: inherit;
@@ -359,19 +390,23 @@
       box-shadow: none;
     }
 
-    #singleBtn {
+    #singleBtn,
+    #clearBtn {
       width: 100%;
-      padding: 12px;
-      font-size: 14px;
+      padding: 11px;
+      font-size: 13px;
       font-weight: 700;
       letter-spacing: 2px;
       font-family: inherit;
-      color: var(--left-text);
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(167, 139, 250, 0.35);
       border-radius: 10px;
       cursor: pointer;
       transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    }
+
+    #singleBtn {
+      color: var(--left-text);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(167, 139, 250, 0.35);
     }
 
     #singleBtn:hover:not(:disabled) {
@@ -385,16 +420,29 @@
       cursor: not-allowed;
     }
 
-    @media (max-width: 900px) {
-      #layout { grid-template-columns: 1fr 340px; }
+    #clearBtn {
+      color: #f87171;
+      background: rgba(192, 43, 43, 0.08);
+      border: 1px solid rgba(248, 113, 113, 0.35);
+    }
+
+    #clearBtn:hover:not(:disabled) {
+      color: #fca5a5;
+      border-color: #f87171;
+      background: rgba(192, 43, 43, 0.18);
+    }
+
+    #clearBtn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
     }
 
     @media (max-width: 720px) {
-      #layout { grid-template-columns: 1fr; grid-template-rows: 1fr 420px; }
+      #layout { grid-template-columns: 1fr; grid-template-rows: 55fr 45fr; }
       #payloads { border-left: none; border-top: 1px solid rgba(167, 139, 250, 0.18); }
-      .brand h1 { font-size: 28px; letter-spacing: 4px; }
-      .brand .dev { font-size: 13px; }
-      #credit { position: static; margin-top: 20px; font-size: 12px; }
+      .brand h1 { font-size: 26px; letter-spacing: 4px; }
+      .brand .dev { font-size: 12px; }
+      #credit { position: static; margin-top: 18px; font-size: 12px; }
     }
 
     @media (min-width: 2560px) {
@@ -402,10 +450,10 @@
       .brand h1 { font-size: 42px; }
       #status { font-size: 21px; }
       #hint { font-size: 18px; }
-      #console { font-size: 17px; }
-      .payload { font-size: 17px; padding: 18px 26px; }
-      #sendBtn { font-size: 17px; padding: 16px; }
-      #singleBtn { font-size: 16px; padding: 14px; }
+      #console { font-size: 15px; }
+      .payload { font-size: 16px; padding: 16px 20px; }
+      #sendBtn { font-size: 16px; padding: 16px; }
+      #singleBtn, #clearBtn { font-size: 15px; padding: 14px; }
     }
   </style>
 </head>
@@ -434,7 +482,7 @@
       </header>
 
       <div id="controls-hint">
-        <b>X</b> select · <b>L2</b> run selected · <b>R1</b> etaHEN only
+        <b>X</b> select · <b>L2</b> run · <b>R1</b> etaHEN · <b>R2</b> clear
       </div>
 
       <div id="list">
@@ -444,6 +492,7 @@
       <div id="footer">
         <button id="sendBtn" disabled>SELECT PAYLOADS (L2)</button>
         <button id="singleBtn" disabled>R1 · ETAHEN ONLY</button>
+        <button id="clearBtn" disabled>R2 · CLEAR</button>
       </div>
     </div>
 
@@ -506,12 +555,14 @@
           ? 'jailbreak already active — payload sender ready'
           : 'ready — press L2');
         hint.classList.add('ready');
-        hint.innerHTML = '<b>X</b> select &nbsp;·&nbsp; <b>L2</b> run selected &nbsp;·&nbsp; <b>R1</b> etaHEN only';
+        hint.innerHTML = '<b>X</b> select &nbsp;·&nbsp; <b>L2</b> run selected &nbsp;·&nbsp; <b>R1</b> etaHEN only &nbsp;·&nbsp; <b>R2</b> clear';
 
         const sendBtn   = document.getElementById('sendBtn');
         const singleBtn = document.getElementById('singleBtn');
+        const clearBtn  = document.getElementById('clearBtn');
         if (sendBtn)   { sendBtn.disabled = false; }
         if (singleBtn) { singleBtn.disabled = false; }
+        if (clearBtn)  { clearBtn.disabled = false; }
       };
 
       window.__setHint = function (txt) { hint.textContent = txt; };
@@ -534,8 +585,9 @@
       const listEl    = document.getElementById('list');
       const sendBtn   = document.getElementById('sendBtn');
       const singleBtn = document.getElementById('singleBtn');
+      const clearBtn  = document.getElementById('clearBtn');
 
-      let ALL_PAYLOADS = [];        /* filled from payloads.json */
+      let ALL_PAYLOADS = [];
       const SINGLE_PAYLOAD = 'etaHEN.elf';
 
       let selected = new Set();
@@ -574,14 +626,15 @@
           el.classList.toggle('selected', isSel);
           el.classList.toggle('cursor', isCursor);
         });
-        updateSendButton();
+        updateButtons();
       }
 
-      function updateSendButton() {
+      function updateButtons() {
         if (sending) {
           sendBtn.textContent = 'RUNNING…';
           sendBtn.disabled = true;
           singleBtn.disabled = true;
+          clearBtn.disabled = true;
           return;
         }
         const n = selected.size;
@@ -592,6 +645,7 @@
             : `RUN ${n} PAYLOADS (L2)`;
         sendBtn.disabled = n === 0 || !window.__elfldrReady;
         singleBtn.disabled = !window.__elfldrReady;
+        clearBtn.disabled = n === 0;
       }
 
       function toggleSelect(name) {
@@ -600,15 +654,39 @@
         applySelectionVisuals();
       }
 
-      function moveCursor(delta) {
+      function clearSelections() {
+        if (sending) return;
+        if (selected.size === 0) {
+          window.writeLog && window.writeLog('nothing to clear', 'info');
+          return;
+        }
+        const n = selected.size;
+        selected.clear();
+        applySelectionVisuals();
+        window.writeLog && window.writeLog(`cleared ${n} selection${n > 1 ? 's' : ''} (R2)`, 'info');
+      }
+
+      function columnCount() {
+        return window.innerWidth < 900 ? 1 : 2;
+      }
+
+      function moveCursor(dx, dy) {
         const rows = document.querySelectorAll('.payload');
         if (!rows.length) return;
-        cursor = (cursor + delta + rows.length) % rows.length;
+
+        if (dy !== 0) {
+          const cols = columnCount();
+          cursor = (cursor + dy * cols + rows.length * 10) % rows.length;
+        } else if (dx !== 0) {
+          cursor = (cursor + dx + rows.length) % rows.length;
+        }
+
         const el = rows[cursor];
         if (el) el.scrollIntoView({ block: 'nearest' });
         applySelectionVisuals();
       }
 
+      /* X — always acts on the row under the cursor, regardless of mouse */
       function xAction() {
         const rows = document.querySelectorAll('.payload');
         if (!rows.length) return;
@@ -627,7 +705,7 @@
         }
 
         sending = true;
-        updateSendButton();
+        updateButtons();
         resetRows();
 
         const queue = ALL_PAYLOADS.filter((n) => selected.has(n));
@@ -647,18 +725,21 @@
               await window.__sendPayload(name);
               setRowState(name, 'sent');
               window.writeLog && window.writeLog(`${name} sent`, 'info');
+
+              /* Auto-deselect on success */
+              if (selected.has(name)) selected.delete(name);
             } catch (err) {
               setRowState(name, 'failed');
               window.writeLog && window.writeLog(`${name} failed: ${err.message}`, 'error');
             }
 
             if (i < queue.length - 1) {
-              await new Promise((r) => setTimeout(r, 3000));
+              await new Promise((r) => setTimeout(r, 1500));
             }
           }
 
           sending = false;
-          updateSendButton();
+          updateButtons();
           window.writeLog && window.writeLog('done', 'info');
         })();
       }
@@ -671,7 +752,7 @@
         }
 
         sending = true;
-        updateSendButton();
+        updateButtons();
 
         setRowState(SINGLE_PAYLOAD, 'sending');
         window.writeLog && window.writeLog(`running ${SINGLE_PAYLOAD} only`, 'info');
@@ -680,17 +761,19 @@
           await window.__sendPayload(SINGLE_PAYLOAD);
           setRowState(SINGLE_PAYLOAD, 'sent');
           window.writeLog && window.writeLog(`${SINGLE_PAYLOAD} sent`, 'info');
+
+          /* Auto-deselect if etaHEN was selected */
+          if (selected.has(SINGLE_PAYLOAD)) selected.delete(SINGLE_PAYLOAD);
         } catch (err) {
           setRowState(SINGLE_PAYLOAD, 'failed');
           window.writeLog && window.writeLog(`${SINGLE_PAYLOAD} failed: ${err.message}`, 'error');
         }
 
         sending = false;
-        updateSendButton();
+        updateButtons();
         window.writeLog && window.writeLog('done', 'info');
       }
 
-      /* ---- Load payload list from payloads.json ---- */
       async function loadPayloadsFromJSON() {
         try {
           const res = await fetch('./payloads.json', { cache: 'no-store' });
@@ -706,7 +789,6 @@
         }
       }
 
-      /* ---- Render rows dynamically ---- */
       function renderRows(names) {
         listEl.innerHTML = '';
 
@@ -736,6 +818,7 @@
 
       sendBtn.addEventListener('click', l2Action);
       singleBtn.addEventListener('click', runSingle);
+      clearBtn.addEventListener('click', clearSelections);
 
       listEl.addEventListener('click', (e) => {
         const row = e.target.closest('.payload');
@@ -744,25 +827,55 @@
         toggleSelect(row.dataset.name);
       });
 
-      window.addEventListener('keydown', (e) => {
-        const isX    = e.key === 'Enter' || e.key === 'x' || e.key === 'X';
-        const isL2   = e.key === 'F7' ||
-                       (e.code === 'Unidentified' && e.keyCode === 118);
-        const isR1   = e.key === 'F6' || e.key === 'R1' ||
-                       (e.code === 'Unidentified' && e.keyCode === 117);
-        const isUp   = e.key === 'ArrowUp';
-        const isDown = e.key === 'ArrowDown';
+      /* ---------- Robust PS5 controller mapping ---------- */
+      function getPressedButton(e) {
+        if (e.key === 'Enter' || e.key === 'x' || e.key === 'X') return 'X';
+        if (e.key === 'F5'  || e.key === 'L1') return 'L1';
+        if (e.key === 'F6'  || e.key === 'R1') return 'R1';
+        if (e.key === 'F7'  || e.key === 'L2') return 'L2';
+        if (e.key === 'F8'  || e.key === 'R2') return 'R2';
 
-        if (isX)         { e.preventDefault(); xAction(); }
-        else if (isL2)   { e.preventDefault(); l2Action(); }
-        else if (isR1)   { e.preventDefault(); runSingle(); }
-        else if (isUp)   { e.preventDefault(); moveCursor(-1); }
-        else if (isDown) { e.preventDefault(); moveCursor(1); }
+        const kc = e.keyCode || e.which;
+        if (kc) {
+          switch (kc) {
+            case 13:  return 'X';
+            case 116: return 'L1';
+            case 117: return 'R1';
+            case 118: return 'L2';
+            case 119: return 'R2';
+            case 37:  return 'LEFT';
+            case 38:  return 'UP';
+            case 39:  return 'RIGHT';
+            case 40:  return 'DOWN';
+          }
+        }
+
+        if (e.key === 'ArrowUp')    return 'UP';
+        if (e.key === 'ArrowDown')  return 'DOWN';
+        if (e.key === 'ArrowLeft')  return 'LEFT';
+        if (e.key === 'ArrowRight') return 'RIGHT';
+
+        return null;
+      }
+
+      window.addEventListener('keydown', (e) => {
+        const btn = getPressedButton(e);
+        if (!btn) return;
+
+        switch (btn) {
+          case 'X':      e.preventDefault(); xAction();          break;
+          case 'L2':     e.preventDefault(); l2Action();         break;
+          case 'R1':     e.preventDefault(); runSingle();        break;
+          case 'R2':     e.preventDefault(); clearSelections();  break;
+          case 'UP':     e.preventDefault(); moveCursor(0, -1);  break;
+          case 'DOWN':   e.preventDefault(); moveCursor(0, 1);   break;
+          case 'LEFT':   e.preventDefault(); moveCursor(-1, 0);  break;
+          case 'RIGHT':  e.preventDefault(); moveCursor(1, 0);   break;
+        }
       }, true);
 
-      window.__elfldrUI = updateSendButton;
+      window.__elfldrUI = updateButtons;
 
-      /* ---- Boot ---- */
       (async () => {
         ALL_PAYLOADS = await loadPayloadsFromJSON();
         renderRows(ALL_PAYLOADS);
