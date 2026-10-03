@@ -4,7 +4,7 @@ Supported firmware: 7.00 through 13.60.
 
 ## Usage
 - In the network settings, set Primary DNS to `45.56.67.85` (Recommended).
-- Run `python serve.py` locally, or open https://muhammad10yaser.github.io/exploit on the PS5.
+- Run `python serve.py` locally, or open https://muhammad10yaser.github.io/ex on the PS5.
 - The payloads are stored in `payloads/`. After a successful run, the ELF loader listens on port `9021`.
 - Once elfldr is listening on port `9021`:
   - Press **X** to select/deselect a payload.
