@@ -1,4 +1,4 @@
-# PS5 Relapse Exploit — by Muhammad Yaser
+# PS5 Relapse Exploit —AIO by Muhammad Yaser
 
 Supported firmware: 7.00 through 13.60.
 
